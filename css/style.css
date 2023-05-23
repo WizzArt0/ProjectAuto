@@ -59,7 +59,7 @@ header {
     vertical-align: center;
     padding: 30px 0;
     background-color: rgba(23, 38, 45, 0.7);
-    height: 300px;
+    height: 310px;
     width: 600px;
     display: flex;
     flex-direction: column;
@@ -71,10 +71,11 @@ header {
 
 .header_title {
     color: #F0C260;
-    font-size: 50px;
+    font-size: 45px;
     margin-top: 20px;
-    font-family: 'Caveat', cursive;
-    text-transform: uppercase;
+    font-family: 'Mulish', sans-serif;
+    /* font-family: 'Caveat', cursive; */
+    /* text-transform: uppercase; */
 }
 
 .header_subText {
@@ -82,8 +83,9 @@ header {
     color:rgb(255, 255, 255);
     font-size: 18px;
     margin-top: 5px;
-    margin-bottom: 70px;
-    margin-top: 40px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    padding: 10px;
 }
 
 .button {
@@ -202,3 +204,22 @@ header {
     text-align: center;
     margin-top: 10px;
 }
+
+
+
+
+.modal {
+    max-width: 600px;
+    max-height: 300px;
+    margin: 100px auto;
+    overflow-y: auto;
+    background: #fff;
+  }
+  
+  .modal > h1 {
+    text-align: center;
+  }
+  
+  .modal .modal-content {
+    padding: 1rem;
+  }
