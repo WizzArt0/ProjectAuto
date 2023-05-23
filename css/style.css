@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Dancing+Script:wght@400;500;600;700&family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Pacifico&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,11 +7,23 @@
 }
 
 header {
+    
+    background-color: rgba(23, 38, 45, 0.7);
+}
+
+.header_wrapper {
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    width: 90%;
+}
+
+.logo_section {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+    font-style: italic;
+    color: #F0C260;
 }
 
 .nav ul {
@@ -19,20 +33,22 @@ header {
     display: flex;
     font-size: 25px;
     margin-left: 200px;
+
 }
 
 .nav a {
     text-decoration: none;
     margin-left: 47px;
+    -webkit-text-stroke: 0.5px rgb(0, 0, 0);
     color: #FFFFFF;
-    font-weight: 700;
+    font-size: 27px;
+    font-weight: 500;
+    font-family: 'Mulish', sans-serif;
  }
 
 .header_section {
     height: 860px;
     background-image: url('./img/3\(2\)\ 1.png');
-    /* display: flex;
-    flex-direction: column; */
 }
 
 .auth_section {
@@ -43,27 +59,59 @@ header {
     vertical-align: center;
     padding: 30px 0;
     background-color: rgba(23, 38, 45, 0.7);
-    height: 330px;
+    height: 300px;
     width: 600px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     margin-top: 100px;
     border-radius: 10%;
+    text-align: center;
 }
 
 .header_title {
-    color:white;
-    font-size: 40px;
+    color: #F0C260;
+    font-size: 50px;
     margin-top: 20px;
+    font-family: 'Caveat', cursive;
+    text-transform: uppercase;
 }
 
 .header_subText {
-    color:rgb(122, 129, 129);
-    font-size: 20px;
+    font-family: 'Mulish', sans-serif;
+    color:rgb(255, 255, 255);
+    font-size: 18px;
     margin-top: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
+    margin-top: 40px;
 }
+
+.button {
+    /* Сбрасываем дефолтные стили */
+    border: none;
+    outline: none;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Roboto, Verdana, Tahoma, sans;
+    padding: 12px 16px;
+    border-radius: 100px;
+    color: #000;
+  }
+
+  .button.orange {
+    background: #F0C260;
+  }
+
+  .button:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  .button:hover.orange {
+    background: #f5ef47;
+  }
+
 /* MENU */
 
 .menu_section {
