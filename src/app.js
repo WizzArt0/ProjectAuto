@@ -84,6 +84,13 @@ let polufabrikats = [
       desc: 'Вареники с вишней замороженные (ручная лепка).',
       price: 4.40,
       inCart: false
+  },
+  {
+      img: 'https://just-eat.by/image/data/shops/146923/189791.jpg',
+      name: 'Замороженные вареники с вишней',
+      desc: 'Вареники с вишней замороженные (ручная лепка).',
+      price: 4.40,
+      inCart: false
   }
 ]
 
