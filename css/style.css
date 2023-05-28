@@ -6,6 +6,10 @@
     scroll-behavior: smooth;
 }
 
+body {
+    background: no-repeat;
+}
+
 header {
     background-color: rgba(23, 38, 45, 0.7);
 }
@@ -33,6 +37,16 @@ header {
     font-size: 25px;
     margin-left: 200px;
 
+}
+
+.logo_section a {
+    text-decoration: none;
+    color: #F0C260;
+}
+
+.logo_section a:hover {
+    text-decoration: none;
+    color: #F0C260;
 }
 
 .nav a {
@@ -175,7 +189,8 @@ header {
 
 .menu_section {
     background-image: url('./img/8-thumb\ 1.png');
-    height: 1500px;
+    background-size:cover;
+    height: 1700px;
     width: 100%;
     margin: 0 auto;
 }
@@ -203,7 +218,7 @@ header {
 }
 
 
-#current {
+.current {
     color:rgb(139, 109, 9);
 }
 
@@ -232,13 +247,14 @@ header {
 .cardName {
     text-align: center;
     color: #fff;
-    font-size: 25px;
+    font-size: 21px;
     padding-top: 15px;
 }
 
 .img_card {
-    width: 350px;
-    height: 350px;
+    width: 320px;
+    height: 320px;
+    border-radius: 15px;
 }
 
 .menu_card {
@@ -246,7 +262,7 @@ header {
     margin: 30px;
 }
 
-.img_card2 {
+/* .img_card2 {
     background-image: url('./img/hummingbird-printed-t-shirt\ 1.png');
     width: 400px;
     height: 400px;
@@ -275,15 +291,49 @@ header {
     background-image: url('./img/today-is-a-good-day-framed-poster\ 1.png');
     width: 400px;
     height: 400px;
-}
+} */
 
 .menu_desc {
-    font-size: 20px;
+    font-size: 17px;
     color:#FFFFFF;
     text-align: center;
     margin-top: 10px;
 }
 
+
+
+.questions_wrapper {
+    display: flex;
+    /* width: 90%; */
+    margin: 0 auto;
+    /* justify-content: space-between; */
+}
+
+.question_section button {
+    margin-top: 30px;
+}
+
+.question_img {
+    width: 1000px;
+    height: 700px;
+    background-image: url('./img/q-help.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.questions_main_section {
+    padding-top: 70px;
+    width: 50%;
+    margin-right: 200px;
+    padding-left: 5%;
+}
+
+.questions_title {
+    color: #000;
+    font-family: 'Mulish', sans-serif;
+    font-size: 41px;
+    margin-bottom: 50px;
+}
 
 
 

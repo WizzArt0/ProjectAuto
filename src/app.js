@@ -1,3 +1,4 @@
+
 let deserts = [
   {
       img: 'https://just-eat.by/image/data/shops/146923/189775.jpg',
@@ -103,22 +104,49 @@ const desertsBtn = document.querySelector('.deserts')
 const polufabrikatsBtn = document.querySelector('.polufabrikats')
 let arrCategories = document.querySelectorAll('.help')
 
+const form = document.getElementById('form')
+const input = form.querySelector('#question_input ')
+const submitBtn = form.querySelector('#submit')
+
+
+let cart = [];
+
 // ulMenuNavbar.addEventListener('click', changeCurrent);
 modalBtn.addEventListener('click', openModal)
 
-getDeserts(deserts)
+
+// При загрузке отображаем десерты
+
+window.addEventListener('load', getDeserts(deserts)) 
+
 
 pancakesBtn.addEventListener('click', () => {
-  getPancakes()
+  [...menuCards.children].forEach(element => {
+    element.remove()
+  });
+  getPancakes();
 })
 
 desertsBtn.addEventListener('click', () => {
+  [...menuCards.children].forEach(element => {
+    element.remove()
+  });
   getDeserts()
 })
 
 polufabrikatsBtn.addEventListener('click', () => {
+  [...menuCards.children].forEach(element => {
+    element.remove()
+  });
   getPoluf()
 })
+
+menuCards.addEventListener('click', goToCart)
+
+function goToCart(event) {
+  cart.push(event.target)
+  console.log(cart);
+}
 
 // function changeCurrent(cur) {
 //   // location.reload();
@@ -131,7 +159,6 @@ polufabrikatsBtn.addEventListener('click', () => {
 function getPancakes() {
 
   // menuCards.remove();
-  
 
   pancakes.forEach((elem) => {
     let div = document.createElement('div');
@@ -191,6 +218,42 @@ function getDeserts(categories) {
 }
 
 
+// ------------------------------------------------------------------
+
+import {Question} from './question.js'
+
+function isValid(value) {
+  return value.length >= 10
+}
+
+
+form.addEventListener('submit', submitFormHandler)
+input.addEventListener('input', () => {
+  submitBtn.disabled = !isValid(input.value)
+})
+
+function submitFormHandler(event) {
+  event.preventDefault();
+
+  if (isValid(input.value)) {
+    const question = {
+      text: input.value.trim(),
+      date: new Date().toJSON()
+    }
+
+    console.log(question);
+
+    submitBtn.disabled = true
+    // Async request to server to save question
+    Question.create(question).then(() => {
+      input.value = ''
+      input.className = ''
+      submitBtn.disabled = false
+    })
+    createModal("Ваш вопрос успешно отправлен", `<button button type="submit" class="mui-btn mui-btn--primary"> Ок. </button>`)
+    // ПРИ НАЖАТИИ НА КНОПКУ ЗАКРЫТЬ МОДАЛКУ
+  }
+}
 
 function getAuthForm() {
     return `
@@ -212,6 +275,17 @@ function getAuthForm() {
       </form>
     `
   }
+
+function getCartForm(cart) {
+  return `
+    <div class="menu_icons_section">
+      <div class="menu_cards">Пусто.
+      </div>
+    </div>
+  `
+}
+
+// АВТОРИЗАЦИЯ
 
 function createModal(title, content) {
     const modal = document.createElement('div')
@@ -253,10 +327,12 @@ function authFormHandler(event) {
     if (typeof content === 'string') {
       createModal('Ошибка!', content)
     } else {
-      console.log('ya mamu traxal');
-      isAuth()
+      isAuth();
+      // СДЕЛАТЬ ЗАКРЫТИЕ МОДАЛКИ АВТОРИЗАЦИИ!!!!!!!!!!
     }
   }
+
+  // ------------------- КОРЗИНА
 
   const busketSection = document.querySelector('.busket_section')
 
@@ -278,4 +354,13 @@ function authFormHandler(event) {
     })
     .then(response => response.json())
     .then(data => data.idToken)
+}
+
+
+
+busketSection.addEventListener('click', openCart)
+
+function openCart(events) {
+  events.preventDefault();
+  createModal('Корзина', getCartForm())
 }
