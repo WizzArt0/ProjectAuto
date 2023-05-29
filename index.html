@@ -27,10 +27,44 @@
             <div class="auth_section">
                 <a id="modal-btn" href="#" alt><img src="./css/img/Bez názvu-3 1.svg" alt=""></a>
             </div>
-            <div class="busket_section dispNone">
+            <div class="busket_section dispNone " id="cart">
+                <!-- dispNone -->
                 <a href="#" alt><img src="./css/img/Bez názvu-4 1.svg" alt=""></a>
+                <div class="cart__num" id="cart_num">0</div>
             </div>
         </div>
+        <div class="popup">
+            <div class="popup__container" id="popup_container">
+              <div class="popup__item">
+                <h1 class="popup__title">Оформление заказа</h1>
+              </div>
+              <div class="popup__item" id="popup_product_list">
+                <div class="popup__product">
+                  <div class="popup__product-wrap">
+                    <img
+                      src="./css/img/desert1.jpg"
+                      alt="Apple IPhone 14 Pro Max 256Gb"
+                      class="popup__product-image"
+                    />
+                    <h2 class="popup__product-title">
+                      Смартфон Apple IPhone 14 Pro Max 256Gb, золотой
+                    </h2>
+                  </div>
+                  <div class="popup__product-wrap">
+                    <div class="popup__product-price">135000</div>
+                    <button class="popup__product-delete">✖</button>
+                  </div>
+                </div>
+              </div>
+              <div class="popup__item">
+                <div class="popup__cost">
+                  <h2 class="popup__cost-title">Итого</h2>
+                  <output class="popup__cost-value" id="popup_cost">150000</output>
+                </div>
+              </div>
+              <button class="popup__close" id="popup_close">✖</button>
+            </div>
+          </div>
         </header>
         <div class="header_preview">
             <div class="header_title">С нами жизнь слаще</div>
@@ -61,8 +95,8 @@
         <div class="menu_title">АССОРТИМЕНТ</div>
         <div class="menu_navbar"><div>
             <ul class="ul_menu_navbar">
-                <li><a class="current help deserts">Десерты</a></li>
-                <li><a class="help pancakes">Торты</a></li>
+                <li><a class="help deserts">Десерты</a></li>
+                <li><a id="current" class="help pancakes">Торты</a></li>
                 <li><a class="help polufabrikats">Полуфабрикаты</a></li>
             </ul></div>
         </div>

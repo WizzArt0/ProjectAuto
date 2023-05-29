@@ -1,19 +1,26 @@
+const popup = document.querySelector(".popup");
+const popupClose = document.querySelector("#popup_close");
+const body = document.body;
+const popupContainer = document.querySelector("#popup_container");
+const popupProductList = document.querySelector("#popup_product_list");
+const popupCost = document.querySelector("#popup_cost");
+const popupDiscount = document.querySelector("#popup_discount");
+const popupCostDiscount = document.querySelector("#popup_cost_discount");
+
 
 let deserts = [
   {
       img: 'https://just-eat.by/image/data/shops/146923/189775.jpg',
       name: 'Набор эклеров Сластена',
       desc: 'Набор эклеров с кремом из взбитых сливок и фруктово-ягодной начинки.',
-      price: 4.70,
-      inCart: false
+      price: 4.70
 
   },
   {
       img: 'https://just-eat.by/image/data/shops/146923/189774.jpg',
       name: 'Набор эклеров Услада',
       desc: 'Набор эклеров с кремом из взбитых сливок и вареного сгущенного молока.',
-      price: 6.90,
-      inCart: false
+      price: 6.90
   }
 ]
 
@@ -22,51 +29,44 @@ let pancakes = [
       img: 'https://just-eat.by/image/data/shops/146923/193560.jpg',
       name: 'Бенто-торт Красный бархат',
       desc: 'Вишнево-шоколадный бисквит, творожно-масляный крем.',
-      price: 15,
-      inCart: false
+      price: 15
 
   },
   {
       img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
       name: 'Бенто-торт Черный лес',
       desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90,
-      inCart: false
+      price: 6.90
   },
   {
       img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
       name: 'Бенто-торт Черный лес',
       desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90,
-      inCart: false
+      price: 6.90
   },
   {
       img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
       name: 'Бенто-торт Черный лес',
       desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90,
-      inCart: false
+      price: 6.90
   },
   {
       img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
       name: 'Бенто-торт Черный лес',
       desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90,
-      inCart: false
+      price: 6.90
   },
   {
       img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
       name: 'Бенто-торт Черный лес',
       desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90,
-      inCart: false
+      price: 6.90
   },
   {
       img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
       name: 'Бенто-торт Черный лес',
       desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90,
-      inCart: false
+      price: 6.90
   }
 ]
 
@@ -75,23 +75,20 @@ let polufabrikats = [
       img: 'https://just-eat.by/image/data/shops/146923/189794.jpg',
       name: 'Замороженные блинчики с печенью',
       desc: 'Блинчики с печеночным паштетом замороженные.',
-      price: 5,
-      inCart: false
+      price: 5
 
   },
   {
       img: 'https://just-eat.by/image/data/shops/146923/189790.jpg',
       name: 'Замороженные вареники с вишней',
       desc: 'Вареники с вишней замороженные (ручная лепка).',
-      price: 4.40,
-      inCart: false
+      price: 4.40
   },
   {
       img: 'https://just-eat.by/image/data/shops/146923/189791.jpg',
       name: 'Замороженные вареники с вишней',
       desc: 'Вареники с вишней замороженные (ручная лепка).',
-      price: 4.40,
-      inCart: false
+      price: 4.40
   }
 ]
 
@@ -108,115 +105,214 @@ const form = document.getElementById('form')
 const input = form.querySelector('#question_input ')
 const submitBtn = form.querySelector('#submit')
 
-
-let cart = [];
-
 // ulMenuNavbar.addEventListener('click', changeCurrent);
 modalBtn.addEventListener('click', openModal)
 
 
 // При загрузке отображаем десерты
 
-window.addEventListener('load', getDeserts(deserts)) 
-
+window.addEventListener('load', renderCart(pancakes)) 
 
 pancakesBtn.addEventListener('click', () => {
+  pancakesBtn.id = 'current';
+  desertsBtn.removeAttribute('id');
+  polufabrikatsBtn.removeAttribute('id');
   [...menuCards.children].forEach(element => {
     element.remove()
   });
-  getPancakes();
+  renderCart(pancakes)
 })
 
 desertsBtn.addEventListener('click', () => {
+  desertsBtn.id = 'current';
+  pancakesBtn.removeAttribute('id');
+  polufabrikatsBtn.removeAttribute('id');
   [...menuCards.children].forEach(element => {
     element.remove()
   });
-  getDeserts()
+  renderCart(deserts)
 })
 
 polufabrikatsBtn.addEventListener('click', () => {
+  polufabrikatsBtn.id = 'current';
+  pancakesBtn.removeAttribute('id');
+  desertsBtn.removeAttribute('id');
   [...menuCards.children].forEach(element => {
     element.remove()
   });
-  getPoluf()
+  renderCart(polufabrikats)
 })
 
-menuCards.addEventListener('click', goToCart)
 
-function goToCart(event) {
-  cart.push(event.target)
-  console.log(cart);
-}
 
-// function changeCurrent(cur) {
-//   // location.reload();
-//   var buf = cur.target.className.split(' ');
-//   console.log(buf[buf.length - 1]);
-//   menuCards.remove();
-//   testFunc();
+// menuCards.addEventListener('click', goToCart)
+
+// function goToCart(event) {
+//   cart.push(event.target)
+//   console.log(cart);
 // }
 
-function getPancakes() {
 
-  // menuCards.remove();
-
-  pancakes.forEach((elem) => {
+function renderCart(arr) {
+  return arr.forEach((elem) => {
     let div = document.createElement('div');
     let div1 = document.createElement('div');
     let img = document.createElement("img");
     let span = document.createElement("span");
+    let btn = document.createElement("button")
     div.appendChild(img);
     div.appendChild(div1);
+    div.appendChild(span);
+    div.appendChild(btn);
     div.classList.add("card")
-    div1.classList.add("cardName")
-    img.classList.add("img_card")
+    div1.classList.add("card__title")
+    img.classList.add("card__image")
+    span.classList.add("card__price--common")
+    btn.classList.add("card__add")
 
     img.src = elem.img;
     div1.innerHTML = elem.name;
+    span.innerHTML = `${elem.price}`
+    btn.innerHTML = 'В корзину'
     menuCards.appendChild(div)
   })
 }
 
-function getPoluf() {
-
-  // menuCards.remove();
-
-  polufabrikats.forEach((elem) => {
-    let div = document.createElement('div');
-    let div1 = document.createElement('div');
-    let img = document.createElement("img");
-    let span = document.createElement("span");
-    div.appendChild(img);
-    div.appendChild(div1);
-    div.classList.add("card")
-    div1.classList.add("cardName")
-    img.classList.add("img_card")
-
-    img.src = elem.img;
-    div1.innerHTML = elem.name;
-    menuCards.appendChild(div)
-  })
+function toNum(str) {
+  const num = Number(str.replace(/ /g, ""));
+  return num;
 }
 
-function getDeserts(categories) {
-
-  deserts.forEach((elem) => {
-    let div = document.createElement('div');
-    let div1 = document.createElement('div');
-    let img = document.createElement("img");
-    let span = document.createElement("span");
-    div.appendChild(img);
-    div.appendChild(div1);
-    div.classList.add("card")
-    div1.classList.add("cardName")
-    img.classList.add("img_card")
-
-    img.src = elem.img;
-    div1.innerHTML = elem.name;
-    menuCards.appendChild(div)
-  })
+function toCurrency(num) {
+  const format = new Intl.NumberFormat("ru-RU", {
+    style: "currency",
+    currency: "RUB",
+    minimumFractionDigits: 0,
+  }).format(num);
+  return format;
 }
 
+const cardAddArr = Array.from(document.querySelectorAll(".card__add"));
+const cartNum = document.querySelector("#cart_num");
+const cart = document.querySelector("#cart");
+
+class Cart {
+  products;
+  constructor() {
+    this.products = [];
+  }
+  get count() {
+    return this.products.length;
+  }
+  addProduct(product) {
+    this.products.push(product);
+  }
+  removeProduct(index) {
+    this.products.splice(index, 1);
+  }
+  get cost() {
+    const prices = this.products.map((product) => {
+      return toNum(product.price);
+    });
+    const sum = prices.reduce((acc, num) => {
+      return acc + num;
+    }, 0);
+    return sum;
+  }
+}
+
+class Product {
+  imageSrc;
+  name;
+  price;
+  constructor(card) {
+    this.imageSrc = card.querySelector(".card__image").src;
+    this.name = card.querySelector(".card__title").innerText;
+    this.price = card.querySelector(".card__price--common").innerText;
+  }
+}
+
+const myCart = new Cart();
+
+if (localStorage.getItem("cart") == null) {
+  localStorage.setItem("cart", JSON.stringify(myCart));
+}
+
+const savedCart = JSON.parse(localStorage.getItem("cart"));
+myCart.products = savedCart.products;
+cartNum.textContent = myCart.count;
+
+myCart.products = cardAddArr.forEach((cardAdd) => {
+  cardAdd.addEventListener("click", (e) => {
+    e.preventDefault();
+    const card = e.target.closest(".card");
+    const product = new Product(card);
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
+    myCart.addProduct(product);
+    localStorage.setItem("cart", JSON.stringify(myCart));
+    cartNum.textContent = myCart.count;
+  });
+});
+
+console.log(myCart);
+
+function popupContainerFill() {
+  popupProductList.innerHTML = null;
+  const savedCart = JSON.parse(localStorage.getItem("cart"));
+  console.log(savedCart);
+  myCart.products = savedCart.products;
+  console.log(myCart);
+  const productsHTML = myCart.products.map((product) => {
+    const productItem = document.createElement("div");
+    productItem.classList.add("popup__product");
+    console.log(productItem);
+
+    const productWrap1 = document.createElement("div");
+    productWrap1.classList.add("popup__product-wrap");
+    const productWrap2 = document.createElement("div");
+    productWrap2.classList.add("popup__product-wrap");
+
+    const productImage = document.createElement("img");
+    productImage.classList.add("popup__product-image");
+    productImage.setAttribute("src", product.imageSrc);
+
+    const productTitle = document.createElement("h2");
+    productTitle.classList.add("popup__product-title");
+    productTitle.innerHTML = product.name;
+
+    const productPrice = document.createElement("div");
+    productPrice.classList.add("popup__product-price");
+    productPrice.innerHTML = toCurrency(toNum(product.price));
+
+    const productDelete = document.createElement("button");
+    productDelete.classList.add("popup__product-delete");
+    productDelete.innerHTML = "&#10006;";
+
+    productDelete.addEventListener("click", () => {
+      myCart.removeProduct(product);
+      localStorage.setItem("cart", JSON.stringify(myCart));
+      popupContainerFill();
+    });
+
+    productWrap1.appendChild(productImage);
+    productWrap1.appendChild(productTitle);
+    productWrap2.appendChild(productPrice);
+    productWrap2.appendChild(productDelete);
+    productItem.appendChild(productWrap1);
+    productItem.appendChild(productWrap2);
+
+    return productItem;
+  });
+
+  productsHTML.forEach((productHTML) => {
+    popupProductList.appendChild(productHTML);
+  });
+
+  popupCost.value = toCurrency(myCart.cost);
+  popupDiscount.value = toCurrency(myCart.discount);
+  popupCostDiscount.value = toCurrency(myCart.costDiscount);
+}
 
 // ------------------------------------------------------------------
 
@@ -276,14 +372,6 @@ function getAuthForm() {
     `
   }
 
-function getCartForm(cart) {
-  return `
-    <div class="menu_icons_section">
-      <div class="menu_cards">Пусто.
-      </div>
-    </div>
-  `
-}
 
 // АВТОРИЗАЦИЯ
 
@@ -362,5 +450,13 @@ busketSection.addEventListener('click', openCart)
 
 function openCart(events) {
   events.preventDefault();
-  createModal('Корзина', getCartForm())
+  popup.classList.add("popup--open");
+  body.classList.add("lock");
+  popupContainerFill();
 }
+
+popupClose.addEventListener("click", (e) => {
+  e.preventDefault();
+  popup.classList.remove("popup--open");
+  body.classList.remove("lock");
+});
