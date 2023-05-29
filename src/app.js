@@ -1,4 +1,5 @@
 const popup = document.querySelector(".popup");
+const popupContacts = document.querySelector(".popup_contacts");
 const popupClose = document.querySelector("#popup_close");
 const body = document.body;
 const popupContainer = document.querySelector("#popup_container");
@@ -39,34 +40,34 @@ let pancakes = [
       price: 6.90
   },
   {
-      img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
-      name: 'Бенто-торт Черный лес',
-      desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90
+      img: 'https://just-eat.by/image/data/shops/146923/193558.jpg',
+      name: 'Бенто-торт Медовый',
+      desc: 'Заварные медовые коржи с добавлением натурального меда пропитаны сметанным кремом.',
+      price: 15
   },
   {
-      img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
-      name: 'Бенто-торт Черный лес',
-      desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90
+      img: 'https://just-eat.by/image/data/shops/146923/189777.jpg',
+      name: 'Торт Киевский (весовое)',
+      desc: 'Коржи из воздушного безе с дробленным арахисом соединены сливочно-шоколадным кремом.',
+      price: 29.50
   },
   {
-      img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
-      name: 'Бенто-торт Черный лес',
-      desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90
+      img: 'https://just-eat.by/image/data/shops/146923/189779.jpg',
+      name: 'Торт Императорский (весовое)',
+      desc: 'Рассыпчатые слоеные коржи соединены кремом из сливочного масла и сгущенного молока.',
+      price: 29.50 
   },
   {
-      img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
-      name: 'Бенто-торт Черный лес',
-      desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90
+      img: 'https://just-eat.by/image/data/shops/146923/189778.jpg',
+      name: 'Торт Медовый (весовое)',
+      desc: 'Заварные медовые коржи с добавлением натурального меда пропитаны сметанным кремом.',
+      price: 25.10
   },
   {
-      img: 'https://just-eat.by/image/data/shops/146923/193559.jpg',
-      name: 'Бенто-торт Черный лес',
-      desc: 'Шоколадный бисквит с начинкой из заварной вишни со сливочным кремом.',
-      price: 6.90
+      img: 'https://just-eat.by/image/data/shops/146923/189781.jpg',
+      name: 'Торт Красный бархат (весовое)',
+      desc: 'Вишнево-шоколадный бисквит, творожно-масляный крем.',
+      price: 27.80
   }
 ]
 
@@ -85,10 +86,22 @@ let polufabrikats = [
       price: 4.40
   },
   {
+      img: 'https://just-eat.by/image/data/shops/146923/189792.jpg',
+      name: 'Замороженные пельмени',
+      desc: 'Пельмени со свининой замороженные (ручная лепка).',
+      price: 6.20
+  },
+  {
+      img: 'https://just-eat.by/image/data/shops/146923/189793.jpg',
+      name: 'Замороженные блинчики с творогом',
+      desc: 'Блинчики с творогом замороженные.',
+      price: 4.90
+  },
+  {
       img: 'https://just-eat.by/image/data/shops/146923/189791.jpg',
-      name: 'Замороженные вареники с вишней',
-      desc: 'Вареники с вишней замороженные (ручная лепка).',
-      price: 4.40
+      name: 'Замороженные вареники с картошкой',
+      desc: 'Вареники с картошкой замороженный ( ручная лепка).',
+      price: 3.20
   }
 ]
 
@@ -104,6 +117,11 @@ let arrCategories = document.querySelectorAll('.help')
 const form = document.getElementById('form')
 const input = form.querySelector('#question_input ')
 const submitBtn = form.querySelector('#submit')
+
+
+
+
+
 
 // ulMenuNavbar.addEventListener('click', changeCurrent);
 modalBtn.addEventListener('click', openModal)
@@ -152,6 +170,10 @@ polufabrikatsBtn.addEventListener('click', () => {
 //   console.log(cart);
 // }
 
+const cardAddArr = Array.from(document.querySelectorAll(".card__add"));
+const cartNum = document.querySelector("#cart_num");
+const cart = document.querySelector("#cart");
+
 
 function renderCart(arr) {
   return arr.forEach((elem) => {
@@ -175,8 +197,13 @@ function renderCart(arr) {
     span.innerHTML = `${elem.price}`
     btn.innerHTML = 'В корзину'
     menuCards.appendChild(div)
+
+    // console.log(cardAddArr);
+
   })
 }
+
+  // console.log(cardAddArr);
 
 function toNum(str) {
   const num = Number(str.replace(/ /g, ""));
@@ -192,9 +219,7 @@ function toCurrency(num) {
   return format;
 }
 
-const cardAddArr = Array.from(document.querySelectorAll(".card__add"));
-const cartNum = document.querySelector("#cart_num");
-const cart = document.querySelector("#cart");
+
 
 class Cart {
   products;
@@ -260,9 +285,7 @@ console.log(myCart);
 function popupContainerFill() {
   popupProductList.innerHTML = null;
   const savedCart = JSON.parse(localStorage.getItem("cart"));
-  console.log(savedCart);
   myCart.products = savedCart.products;
-  console.log(myCart);
   const productsHTML = myCart.products.map((product) => {
     const productItem = document.createElement("div");
     productItem.classList.add("popup__product");
@@ -423,6 +446,8 @@ function authFormHandler(event) {
   // ------------------- КОРЗИНА
 
   const busketSection = document.querySelector('.busket_section')
+  const contacts = document.querySelector(".pedik")
+  const popupCloseCont = popupContacts.querySelector('#popup_closeCont')
 
   function isAuth() {
     busketSection.classList.remove("dispNone")
@@ -447,6 +472,7 @@ function authFormHandler(event) {
 
 
 busketSection.addEventListener('click', openCart)
+contacts.addEventListener('click', openCartContacts)
 
 function openCart(events) {
   events.preventDefault();
@@ -455,6 +481,17 @@ function openCart(events) {
   popupContainerFill();
 }
 
+function openCartContacts(events) {
+  events.preventDefault();
+  popupContacts.classList.add("popup--open");
+  body.classList.add("lock");
+}
+
+popupCloseCont.addEventListener("click", (e) => {
+  e.preventDefault();
+  popupContacts.classList.remove("popup--open");
+  body.classList.remove("lock");
+});
 popupClose.addEventListener("click", (e) => {
   e.preventDefault();
   popup.classList.remove("popup--open");
