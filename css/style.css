@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Dancing+Script:wght@400;500;600;700&family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Dancing+Script:wght@400;500;600;700&family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Nova+Square&family=Pacifico&display=swap');
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
 
 .nesolestag-enadenud {
   width: 615px;
@@ -63,6 +62,7 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    /* overflow-x: hidden */
 }
 
 body {
@@ -81,11 +81,18 @@ header {
     margin: 0 auto;
 }
 
-.logo_section {
-    font-family: 'Dancing Script', cursive;
-    font-size: 70px;
+.logo_section span {
+    font-family: 'Nova Square', sans-serif;
+    font-size: 40px;
     font-style: italic;
     color: #F0C260;
+    /* display: flex;
+    vertical-align: center; */
+}
+
+.logo_section img {
+  width: 60px;
+  height: 50px;
 }
 
 .nav ul {
@@ -120,11 +127,13 @@ header {
 
 .header_section {
     height: 860px;
-    background-image: url('./img/3\(2\)\ 1.png');
+    background-image: url('./img/backgroundMain.jpg');
+    background-size: contain;
 }
 
 .auth_section {
-    margin-right: -100px;
+    margin-right: -50px;
+    /* padding-left: 50px; */
 }
 
 .header_preview {
@@ -144,19 +153,15 @@ header {
 .header_title {
     color: #F0C260;
     font-size: 45px;
-    margin-top: 20px;
+    margin-top: 10px;
     font-family: 'Mulish', sans-serif;
-    /* font-family: 'Caveat', cursive; */
-    /* text-transform: uppercase; */
 }
 
 .header_subText {
     font-family: 'Mulish', sans-serif;
     color:rgb(255, 255, 255);
     font-size: 18px;
-    margin-top: 5px;
-    margin-bottom: 30px;
-    margin-top: 10px;
+    margin-top: 0px;
     padding: 20px;
     text-align: justify;
 }
@@ -202,20 +207,31 @@ header {
     display: flex;
     width: 90%;
     margin: 0 auto;
+    vertical-align: middle;
 }
 
 .photosuka {
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     border-radius: 10%;
 }
 
+.first-photo {
+  display: flex;
+  align-items: center;
+}
+
+.second-photo {
+  display: flex;
+  align-items: center;
+}
+
 .podpis {
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 150px;
     position: relative;
-    left: 220px;
-    bottom: 60px;
+    left: 400px;
+    bottom: 40px;
 }
 
 .team-main-title {
@@ -227,6 +243,7 @@ header {
 
 .team-photo-container {
     display: flex;
+    gap: 10px;
 }
 
 .team-subtitle {
@@ -236,18 +253,34 @@ header {
     margin-top: 10px;
 }
 
+/* .team-text-container {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+} */
+
 .team-descriprion {
     font-family: 'Mulish', sans-serif;
     color:#fff;
     line-height: 30px;
-    margin: 40px 250px 0px 0px;
+    margin: 40px 170px 0px 0px;
     font-size: 18px;
+}
+
+.markered {
+  color:#F0C260;
+}
+
+.director {
+  font-style: italic;
+  font-size: 1.3rem;
+  color:#F0C260;
 }
 
 /* MENU */
 
 .menu_section {
-    background-image: url('./img/8-thumb\ 1.png');
+    background-image: url('./img/cardback.jpg');
     background-size:cover;
     height: 1700px;
     width: 100%;
@@ -262,27 +295,18 @@ header {
 
 .menu_title {
     font-family: 'Dancing Script', cursive;
-    font-size: 40px;
-    color:#FFFFFF;
+    font-size: 65px;
+    color:#F0C260;
     padding-top: 60px;
     text-align: center;
 }
 
 .busket_section {
-
   border-radius: 50%;
-  /* background-color: #364364; */
   transition: 0.1s;
   cursor: pointer;
-  position: fixed; /* Фиксированное расположение */
-  /* top: 50px; /* в правом верхнем углу */
+  position: fixed; 
   right: 50px;
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  object-fit: contain; */
-  /* padding: 15px; */
-  /* box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .cart__num {
@@ -379,17 +403,10 @@ header {
     border-bottom: 1px solid #ddd;
     padding: 20px;
   }
-  /* .popup__item_contacts {
-    border-bottom: 1px solid #ddd;
-    padding: 20px;
-    display: block;
-  } */
 
   .contacts_container {
     padding-bottom: 50px
   }
-
-
   
   .popup__item:last-of-type {
     border-bottom: none;
@@ -486,11 +503,12 @@ header {
     display: flex;
     font-size: 25px;
     margin-left: 33%;
+    transition: 1s;
 }
 
 
 #current {
-    color:rgb(139, 109, 9);
+    color:rgb(237, 235, 227);
 }
 
 .menu_navbar .help {
@@ -502,15 +520,15 @@ header {
 
 .menu_navbar .help:hover {
     cursor: pointer;
+    
+    transform: scale(1.2);
 }
-
-
 
 .menu_cards {
     display: flex;
     flex-wrap: wrap; 
     margin: 0 auto;
-    padding-left: 300px;
+    padding-left: 220px;
 }
 
 .card {
@@ -527,7 +545,7 @@ header {
 }
 
 .card__image {
-    width: 320px;
+    width: 400px;
     height: 320px;
     border-radius: 15px;
 }
@@ -537,45 +555,12 @@ header {
     margin: 30px;
 }
 
-/* .img_card2 {
-    background-image: url('./img/hummingbird-printed-t-shirt\ 1.png');
-    width: 400px;
-    height: 400px;
-}
-.img_card1 {
-    background-image: url('./img/brown-bear-printed-sweater\ 1.png');
-    width: 400px;
-    height: 400px;
-}
-.img_card3 {
-    background-image: url('./img/mountain-fox-vector-graphics\ 1.png');
-    width: 400px;
-    height: 400px;
-}
-.img_card4 {
-    background-image: url('./img/mug-the-best-is-yet-to-come\ 1.png');
-    width: 400px;
-    height: 400px;
-}
-.img_card5 {
-    background-image: url('./img/the-adventure-begins-framed-poster\ 1.png');
-    width: 400px;
-    height: 400px;
-}
-.img_card6 {
-    background-image: url('./img/today-is-a-good-day-framed-poster\ 1.png');
-    width: 400px;
-    height: 400px;
-} */
-
 .menu_desc {
     font-size: 17px;
     color:#FFFFFF;
     text-align: center;
     margin-top: 10px;
 }
-
-
 
 .questions_wrapper {
     display: flex;
@@ -589,9 +574,9 @@ header {
 }
 
 .question_img {
-    width: 1000px;
-    height: 700px;
-    background-image: url('./img/q-help.jpg');
+    width: 800px;
+    height: 800px;
+    background-image: url('./img/question2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -599,7 +584,7 @@ header {
 .questions_main_section {
     padding-top: 70px;
     width: 50%;
-    margin-right: 200px;
+    /* margin-right: 200px; */
     padding-left: 5%;
 }
 
@@ -611,6 +596,43 @@ header {
 }
 
 
+.modalAuto {
+  display: block;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modalAuto-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .modal {
     max-width: 600px;
@@ -625,7 +647,7 @@ header {
   }
   
   .modal .modal-content {
-    padding: 1rem;
+    padding: 1rem 3rem;
   }
 
 footer {
@@ -657,4 +679,133 @@ footer .nav ul {
 
 .maps_section iframe {
     margin: 0 auto;
+}
+
+
+
+/* INFO ABOUT AUTO CARD */
+
+.modalAuto-content {
+  background: radial-gradient(circle farthest-corner at 100px 50px, #FBF2EB, #352A3B);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.infoAutoContainer {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  /* align-items: center; */
+}
+
+.imgWithFeatures {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.infoFeatures {
+  padding-right: 50px;
+}
+
+.infoImg {
+  width: 500px;
+}
+
+.infoName {
+  font-size: 57px;
+  /* font-family: 'Mulish', sans-serif; */
+  font-family: 'Nova Square', sans-serif;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.techWrap {
+  font-size: 24px;
+  font-family: 'Nova Square', sans-serif;
+  font-weight: bold;
+}
+
+.infoDesc {
+  padding-left: 70px;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  font-family: 'Nova Square', sans-serif;
+  width: 90%;
+  padding-bottom: 30px;
+}
+
+.card__addInfo {
+  display: block;
+  font-weight: 400;
+  font-size: 17px;
+  width: 15%;
+  margin: 0 auto;
+  color: #ff6633;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #F0C260;
+  border-radius: 4px;
+  cursor: pointer; /* Меняем курсор при наведении */
+  transition: 0.2s;
+  /*margin-top: auto; /* Прижимаем кнопку к низу карточки */
+}
+
+.card__addInfo:hover {
+  border: 1px solid #ff6633;
+  background-color: #ff6633;
+  color: #fff;
+}
+
+.most-popular-section {
+  display: flex;
+}
+
+.most-popular-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.most-popular-logo {
+  width: 90%;
+  padding: 50px 0px;
+}
+
+.most-popular-logo img{
+  width: 200px;
+}
+
+@media (max-width: 1600px) {
+  .nav a {
+    font-size: 21px;
+  }
+  .infoImg {
+    width: 350px;
+  }
+  .infoName {
+    font-size: 40px;
+  }
+  .techWrap {
+    font-size: 22px;
+  }
+  .menu_title {
+    font-size: 52px;
+  }
+  .menu_navbar ul {
+    list-style: none; 
+    padding: 40px 0; 
+    display: flex;
+    font-size: 25px;
+    margin-left: 27.5%;
+    transition: 1s;
+  }
+  .footer-wrapper ul {
+    list-style: none; 
+    margin: 0; 
+    padding: 50px 0; 
+    display: flex;
+    font-size: 25px;
+    margin-left: 5%;
+  } 
 }

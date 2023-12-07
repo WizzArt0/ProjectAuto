@@ -1,6 +1,6 @@
 export class Question {
     static create(question) {
-      return fetch('https://dolce-vita-ee2e3-default-rtdb.europe-west1.firebasedatabase.app/questions.json', {
+      return fetch('https://project-auto-fb73e-default-rtdb.firebaseio.com/questions.json', {
         method: 'POST',
         body: JSON.stringify(question),
         headers: {
@@ -18,17 +18,17 @@ export class Question {
         if (!token) {
           return Promise.resolve('<p class="error">У вас нет токена</p>')
         }
-        return fetch(`https://dolce-vita-ee2e3-default-rtdb.europe-west1.firebasedatabase.app/questions.json?auth=${token}`)
+        return fetch(`https://project-auto-fb73e-default-rtdb.firebaseio.com/questions.json?auth=${token}`)
           .then(response => response.json())
           .then(response => {
             if (response && response.error) {
               return `<p class="error">${response.error}</p>`
             }
     
-            // return response ? Object.keys(response).map(key => ({
-            //   ...response[key],
-            //   id: key
-            // })) : []
+            return response ? Object.keys(response).map(key => ({
+              ...response[key],
+              id: key
+            })) : []
           })
       }
 }
@@ -41,5 +41,5 @@ function addToLocalStorage(question) {
   
   function getQuestionsFromLocalStorage() {
     return JSON.parse(localStorage.getItem('questions') || '[]')
-  }
+}
   
